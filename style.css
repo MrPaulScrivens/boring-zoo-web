@@ -85,11 +85,14 @@ h1{font-family:var(--serif);font-size:clamp(2rem, 1.4rem + 2.2vw, 3rem);
   color:var(--muted)}
 
 /* ---- install command ---- */
+/* width:100% so every box fills its column — otherwise flex shrink-wraps to
+   the command text and boxes go ragged across a row. */
 .cmd{display:flex;align-items:center;gap:.75rem;background:var(--card);
-  border:1px solid var(--rule);padding:.6rem .8rem;margin-top:.6rem}
+  border:1px solid var(--rule);padding:.6rem .8rem;margin-top:.6rem;
+  width:100%}
 .cmd code{font-family:var(--mono);font-size:0.8125rem;
   color:var(--brass);overflow-x:auto;white-space:nowrap;flex:1;
-  scrollbar-width:thin}
+  min-width:0;scrollbar-width:thin}
 .copy{font-family:var(--sans);font-size:.6875rem;font-weight:600;
   text-transform:uppercase;letter-spacing:.1em;color:var(--muted);
   background:none;border:1px solid var(--rule);border-radius:2px;
@@ -99,17 +102,32 @@ h1{font-family:var(--serif);font-size:clamp(2rem, 1.4rem + 2.2vw, 3rem);
 
 /* ---- the specimen plaque ---- */
 .shelf{display:grid;gap:0;margin-top:1.25rem}
-@media(min-width:768px){.shelf{grid-template-columns:1fr 1fr;
-  column-gap:2.5rem}}
-.plaque{border-top:1px solid var(--rule);padding:1.05rem 0 1.35rem}
+@media(min-width:768px){
+  /* equal columns, and both plaques in a row share the taller one's height
+     so their rules and command boxes line up */
+  .shelf{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:2.5rem;
+    align-items:stretch}
+}
+/* Rows share a baseline: every plaque is a grid row of its own, and the
+   install command is pinned to the bottom so the boxes line up across
+   columns no matter how long the description runs. */
+.plaque{border-top:1px solid var(--rule);padding:1.05rem 0 1.35rem;
+  display:grid;grid-template-rows:auto 1fr auto;align-content:start;
+  /* single explicit column capped at 100%: without this the nowrap install
+     command sets a min-content width and stretches the whole grid track */
+  grid-template-columns:minmax(0,1fr);min-width:0}
 .plaque h3{font-family:var(--serif);font-size:1.125rem;font-weight:500;
   margin:0 0 .3rem}
 .plaque h3 a{color:var(--ink);border:0}
 .plaque h3 a:hover{color:var(--brass-deep)}
-.plaque p{font-size:.9375rem;line-height:1.55;color:var(--muted);
-  max-width:46ch}
+.plaque p{font-size:.9375rem;line-height:1.55;color:var(--muted)}
 
-section.category{margin-top:3.5rem}
+.shelf-note{margin-top:2.5rem;font-size:.9375rem;color:var(--muted);
+  max-width:var(--measure)}
+.shelf-note code{font-family:var(--mono);font-size:.8125rem;
+  color:var(--brass);white-space:nowrap}
+
+section.category{margin-top:2.25rem}
 section.category>.label{display:block;padding-bottom:.5rem;
   border-bottom:2px solid var(--ink);color:var(--ink)}
 section.category>.label .n{color:var(--muted);font-weight:400}

@@ -70,7 +70,8 @@ foundation belongs to everyone willing to do the work.</p></div>
 <script>
 document.querySelectorAll(".copy").forEach(function(b){
   b.addEventListener("click",function(){
-    var t=b.parentElement.querySelector("code").textContent;
+    // data-copy holds the full command when the box displays a short form
+    var t=b.dataset.copy||b.parentElement.querySelector("code").textContent;
     navigator.clipboard.writeText(t).then(function(){
       var o=b.textContent;b.textContent="Copied";b.dataset.done="1";
       setTimeout(function(){b.textContent=o;delete b.dataset.done},1600);
