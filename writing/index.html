@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Writing — Boring Zoo</title>
+<meta name="description" content="Essays on business strategy, courses, and building a foundation that works.">
+<link rel="canonical" href="https://boringzoo.com/writing/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Writing — Boring Zoo">
+<meta property="og:description" content="Essays on business strategy, courses, and building a foundation that works.">
+<meta property="og:url" content="https://boringzoo.com/writing/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#F2EFE7">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+  <div class="wrap masthead">
+    <a class="wordmark" href="/">Boring Zoo</a>
+    <nav class="site" aria-label="Primary"><ul><li><a href="/">Skills</a></li><li><a href="/world-code/">The World Code</a></li><li><a href="/manifesto/">Manifesto</a></li><li><a href="/writing/" aria-current="page">Writing</a></li></ul></nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+<h1>Writing</h1>
+<div class="standfirst"><p>How these ideas play out in practice.</p></div>
+<ul class="posts"><li><p class="label">2026-03-09</p><h2><a href="/writing/courses-are-dead/">Courses Are Dead and You Already Have a Replacement</a></h2><p>What is something better than courses? Skills.</p></li><li><p class="label">2026-03-09</p><h2><a href="/writing/floor/">Build Your Floor</a></h2><p>It&#x27;s good to be ambitious, but sometimes ambitious leads us to looking at the wrong thing.</p></li></ul>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p>Built by Paul Scrivens. Everything here is free and open source
+    &mdash; <a href="https://github.com/MrPaulScrivens/Boring-Zoo">the whole library is on GitHub</a>.</p>
+  </div>
+</footer>
+<script>
+document.querySelectorAll(".copy").forEach(function(b){
+  b.addEventListener("click",function(){
+    var t=b.parentElement.querySelector("code").textContent;
+    navigator.clipboard.writeText(t).then(function(){
+      var o=b.textContent;b.textContent="Copied";b.dataset.done="1";
+      setTimeout(function(){b.textContent=o;delete b.dataset.done},1600);
+    });
+  });
+});
+</script>
+</body>
+</html>

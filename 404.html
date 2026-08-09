@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Not found — Boring Zoo</title>
+<meta name="description" content="That page doesn&#x27;t exist.">
+<link rel="canonical" href="https://boringzoo.com/404.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Not found — Boring Zoo">
+<meta property="og:description" content="That page doesn&#x27;t exist.">
+<meta property="og:url" content="https://boringzoo.com/404.html">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#F2EFE7">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site">
+  <div class="wrap masthead">
+    <a class="wordmark" href="/">Boring Zoo</a>
+    <nav class="site" aria-label="Primary"><ul><li><a href="/">Skills</a></li><li><a href="/world-code/">The World Code</a></li><li><a href="/manifesto/">Manifesto</a></li><li><a href="/writing/">Writing</a></li></ul></nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+<h1>Not found</h1><div class="standfirst"><p>That enclosure is empty.</p></div><p style="margin-top:2rem"><a href="/">Back to the library</a></p>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p>Built by Paul Scrivens. Everything here is free and open source
+    &mdash; <a href="https://github.com/MrPaulScrivens/Boring-Zoo">the whole library is on GitHub</a>.</p>
+  </div>
+</footer>
+<script>
+document.querySelectorAll(".copy").forEach(function(b){
+  b.addEventListener("click",function(){
+    var t=b.parentElement.querySelector("code").textContent;
+    navigator.clipboard.writeText(t).then(function(){
+      var o=b.textContent;b.textContent="Copied";b.dataset.done="1";
+      setTimeout(function(){b.textContent=o;delete b.dataset.done},1600);
+    });
+  });
+});
+</script>
+</body>
+</html>
