@@ -4,194 +4,194 @@ ul{padding:0;list-style:none}
 html{-webkit-text-size-adjust:100%}
 
 :root{
-  --linen:#F2EFE7; --card:#FBFAF6; --ink:#22201B;
-  --muted:#6E6A62; --rule:#D9D4C7;
-  --brass:#8A6220; --brass-deep:#6B4D1E; --brass-wash:#F0E7D4;
-  --measure:68ch;
-  --serif:"Newsreader",Georgia,"Times New Roman",serif;
-  --sans:"Public Sans",system-ui,-apple-system,sans-serif;
+  --y:#FFD100; --ink:#121212; --grey:#4A4A4A; --hair:#E3E3DE;
+  --measure:66ch;
+  --sans:"Archivo",system-ui,"Helvetica Neue",Arial,sans-serif;
+  --black:"Archivo Black",var(--sans);
   --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
 }
 
-html{background:var(--linen)}
+html{background:var(--ink)}
 body{
-  background:var(--linen); color:var(--ink);
-  font-family:var(--serif); font-size:1.0625rem;
-  line-height:1.72;
-  font-variant-numeric:oldstyle-nums;
+  background:#fff; color:var(--ink);
+  font-family:var(--sans); font-size:1.0625rem;
+  line-height:1.65;
   -webkit-font-smoothing:antialiased;
 }
 
-/* ---- skip link: keyboard users bypass the nav ---- */
-.skip{position:absolute;left:-9999px;top:0;background:var(--card);color:var(--ink);
-  padding:.6rem 1rem;border:1px solid var(--ink);z-index:50}
+/* Display voice: Archivo Black, caps, tight. Small sizes relax to 0 —
+   negative tracking below ~1rem starts to clot. */
+h1,h2.display,.wordmark,.sign h3,.num{font-family:var(--black);
+  font-weight:400;text-transform:uppercase;letter-spacing:-.03em}
+
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+
+.wrap{max-width:72rem;margin:0 auto;padding:0 1.5rem}
+
+/* ---- skip link ---- */
+.skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--y);
+  padding:.6rem 1rem;z-index:50;font-weight:600}
 .skip:focus{left:.5rem;top:.5rem}
 
-a{color:var(--brass);text-decoration:none;
-  border-bottom:1px solid color-mix(in srgb,var(--brass) 35%,transparent)}
-a:hover{color:var(--brass-deep);border-bottom-color:var(--brass-deep)}
-:focus-visible{outline:2px solid var(--brass-deep);outline-offset:3px;border-radius:2px}
+/* ---- masthead (ink band) ---- */
+header.site{background:var(--ink);color:#fff}
+.masthead{display:flex;flex-wrap:wrap;gap:.75rem 2rem;align-items:center;
+  justify-content:space-between;padding:1.1rem 1.5rem}
+.wordmark{font-size:1.2rem;color:#fff}
+.wordmark:hover{color:var(--y)}
+nav.site ul{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;align-items:center}
+nav.site a{font-size:.75rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.1em;color:#B8B8B2;padding:.3rem 0}
+nav.site a:hover{color:#fff}
+nav.site a[aria-current]{color:var(--y);box-shadow:inset 0 -3px 0 var(--y)}
+.admission{font-size:.7rem;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--y)}
+@media(max-width:640px){.admission{display:none}}
 
-.wrap{max-width:78rem;margin:0 auto;padding:0 1.5rem}
+/* ---- hero (yellow band) ---- */
+.hero{background:var(--y)}
+.hero .wrap{display:grid;gap:2rem;padding-top:3.2rem;padding-bottom:2.8rem}
+@media(min-width:880px){
+  .hero .wrap{grid-template-columns:1fr auto;align-items:end;column-gap:4rem}
+}
+.hero h1{font-size:clamp(2.2rem, 1.4rem + 3.4vw, 4rem);line-height:.98;
+  max-width:15ch}
+.hero .lede{font-weight:600;margin-top:1.2rem;max-width:46ch}
+.hero .aside-sign{text-align:center}
+.hero .aside-sign p{font-size:.75rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;margin-top:.9rem;max-width:24ch}
+.hero .cmd{margin-top:1.4rem;max-width:34rem}
 
-/* ---- masthead ---- */
-header.site{border-bottom:1px solid var(--rule);margin-bottom:3.5rem}
-.masthead{display:flex;flex-wrap:wrap;gap:1rem 2rem;align-items:baseline;
-  justify-content:space-between;padding:1.75rem 0}
-.wordmark{font-family:var(--serif);font-weight:600;font-size:1.35rem;
-  letter-spacing:-.01em;color:var(--ink);border:0}
-.wordmark:hover{color:var(--ink)}
-nav.site ul{display:flex;flex-wrap:wrap;gap:1.5rem;
-  font-family:var(--sans);font-size:.875rem}
-nav.site a{color:var(--muted);border:0}
-nav.site a:hover,nav.site a[aria-current]{color:var(--ink)}
-nav.site a[aria-current]{box-shadow:inset 0 -1px 0 var(--brass)}
+/* ---- trail strip (ink band, sticky wayfinding) ---- */
+nav.trails{background:var(--ink);position:sticky;top:0;z-index:40}
+nav.trails ul{display:flex;overflow-x:auto;scrollbar-width:none}
+nav.trails ul::-webkit-scrollbar{display:none}
+nav.trails a{display:flex;gap:.55rem;align-items:baseline;white-space:nowrap;
+  color:#fff;font-weight:700;font-size:.76rem;letter-spacing:.09em;
+  text-transform:uppercase;padding:.85rem 1.25rem;border-right:1px solid #333}
+nav.trails a em{font-style:normal;font-family:var(--black);color:var(--y)}
+nav.trails a:hover{background:var(--y);color:var(--ink)}
+nav.trails a:hover em{color:var(--ink)}
+
+/* ---- enclosures (white shelf) ---- */
+section.enclosure{scroll-margin-top:3.4rem;margin-top:3.6rem}
+section.enclosure:first-of-type{margin-top:2.8rem}
+.enc-head{display:flex;gap:1.4rem;align-items:center;
+  border-top:3px solid var(--ink);padding-top:1.3rem}
+/* pictogram tiles: ink animal on yellow square, framed like an exhibit sign */
+.pict-tile{flex-shrink:0;display:block;border:3px solid var(--ink);
+  image-rendering:auto}
+.hero .bartleby{display:block;margin:0 auto;max-width:100%;height:auto}
+.enc-head .label{font-size:.7rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--grey)}
+.enc-head h2{font-family:var(--black);font-weight:400;text-transform:uppercase;
+  letter-spacing:-.02em;font-size:1.4rem;margin-top:.15rem}
+.enc-head .says{font-size:.86rem;color:var(--grey);margin-top:.2rem}
+
+.shelf{display:grid;gap:1.5rem;margin-top:1.5rem}
+@media(min-width:768px){
+  .shelf{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}
+}
+
+/* ---- the exhibit sign ---- */
+.sign{border:3px solid var(--ink);background:#fff;
+  display:grid;grid-template-rows:auto 1fr auto;
+  grid-template-columns:minmax(0,1fr);min-width:0}
+.sign .top{display:flex;gap:1rem;align-items:center;padding:.85rem 1.1rem .45rem}
+.num{font-size:1.9rem;line-height:1}
+.sign h3{font-size:1.02rem;letter-spacing:-.01em;line-height:1.25}
+.sign h3 a:hover{box-shadow:inset 0 -3px 0 var(--y)}
+.sign p{padding:0 1.1rem .95rem;font-size:.875rem;line-height:1.5;
+  color:var(--grey)}
+/* command bar: the takeable thing. Yellow lives only on ink. */
+.cmd{display:flex;align-items:center;gap:.75rem;background:var(--ink);
+  padding:.65rem 1rem;width:100%;transition:background .12s}
+.cmd code{font-family:var(--mono);font-size:0.8125rem;
+  color:var(--y);overflow-x:auto;white-space:nowrap;flex:1;min-width:0;
+  scrollbar-width:thin;transition:color .12s}
+.copy{font-family:var(--sans);font-size:.66rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.12em;color:var(--y);
+  background:none;border:1px solid #4a4a4a;padding:.32rem .55rem;
+  cursor:pointer;flex-shrink:0;transition:color .12s,border-color .12s}
+/* the signage flip: ink and yellow trade places; nothing moves */
+.sign:hover .cmd,.cmd:hover{background:var(--y)}
+.sign:hover .cmd code,.cmd:hover code{color:var(--ink)}
+.sign:hover .copy,.cmd:hover .copy{color:var(--ink);border-color:var(--ink)}
+.copy[data-done]{background:var(--ink);color:var(--y);border-color:var(--y)}
+.sign:hover .copy[data-done]{background:var(--ink);color:var(--y)}
+
+.shelf-note{margin-top:1.6rem;font-size:.875rem;color:var(--grey);
+  max-width:var(--measure)}
+.shelf-note code{font-family:var(--mono);font-size:.8125rem;white-space:nowrap}
+
+/* ---- interior pages ---- */
+.page-head{padding-top:3rem}
+.chip{display:inline-block;background:var(--y);font-weight:700;
+  font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:.4rem .7rem}
+.page-head h1{font-size:clamp(1.9rem,1.3rem + 2.6vw,3.1rem);line-height:1.02;
+  margin-top:1.1rem;max-width:18ch}
+.standfirst{margin-top:1.3rem;border-left:4px solid var(--ink);
+  padding-left:1.1rem;max-width:var(--measure)}
+.standfirst p{font-weight:600;font-size:1.1rem;line-height:1.5}
 
 /* ---- prose ---- */
-.prose{max-width:var(--measure)}
-.prose p+p,.prose ul+p,.prose p+ul{margin-top:1.25rem}
-.prose h2{font-family:var(--serif);font-size:1.5rem;
-  font-weight:600;margin:2.75rem 0 .75rem;line-height:1.3}
-.prose h3{font-family:var(--serif);font-size:1.175rem;font-weight:600;
-  margin:2rem 0 .5rem}
-.prose ul{margin-top:1.25rem}
-.prose li{padding-left:1.1rem;position:relative;margin-bottom:.5rem}
-.prose li::before{content:"";position:absolute;left:0;top:.75em;
-  width:.4rem;height:1px;background:var(--rule)}
-.prose blockquote{margin:2.25rem 0;padding-left:1.15rem;
-  border-left:2px solid var(--brass)}
-.prose blockquote p{font-size:1.15rem;line-height:1.5;color:var(--ink)}
-.prose blockquote p+p{margin-top:.6rem;font-size:.9375rem;line-height:1.6;
-  color:var(--muted)}
-.prose code{font-family:var(--mono);font-size:.875em;
-  background:var(--brass-wash);padding:.1em .35em;border-radius:2px}
-.prose pre{background:var(--card);border:1px solid var(--rule);
-  padding:1rem;overflow-x:auto;margin:1.5rem 0}
-.prose pre code{background:none;padding:0}
-
-h1{font-family:var(--serif);font-size:clamp(2rem, 1.4rem + 2.2vw, 3rem);
-  font-weight:600;line-height:1.14;letter-spacing:-.015em;
-  max-width:20ch;text-wrap:balance}
-
-.standfirst{margin:1.5rem 0 0;padding-left:1.15rem;
-  border-left:2px solid var(--rule);max-width:var(--measure)}
-.standfirst p{font-style:italic;font-size:1.15rem;line-height:1.55;
-  color:var(--ink)}
-
-.label{font-family:var(--sans);font-size:0.6875rem;
-  font-weight:600;text-transform:uppercase;letter-spacing:.14em;
-  color:var(--muted)}
-.meta{font-family:var(--sans);font-size:0.8125rem;
-  color:var(--muted)}
-
-/* ---- install command ---- */
-/* width:100% so every box fills its column — otherwise flex shrink-wraps to
-   the command text and boxes go ragged across a row. */
-.cmd{display:flex;align-items:center;gap:.75rem;background:var(--card);
-  border:1px solid var(--rule);padding:.6rem .8rem;margin-top:.6rem;
-  width:100%}
-.cmd code{font-family:var(--mono);font-size:0.8125rem;
-  color:var(--brass);overflow-x:auto;white-space:nowrap;flex:1;
-  min-width:0;scrollbar-width:thin}
-.copy{font-family:var(--sans);font-size:.6875rem;font-weight:600;
-  text-transform:uppercase;letter-spacing:.1em;color:var(--muted);
-  background:none;border:1px solid var(--rule);border-radius:2px;
-  padding:.3rem .5rem;cursor:pointer;flex-shrink:0}
-.copy:hover{color:var(--ink);border-color:var(--muted)}
-.copy[data-done]{color:var(--brass-deep);border-color:var(--brass)}
-
-/* ---- the specimen plaque ---- */
-.shelf{display:grid;gap:0;margin-top:1.25rem}
-@media(min-width:768px){
-  /* equal columns, and both plaques in a row share the taller one's height
-     so their rules and command boxes line up */
-  .shelf{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:2.5rem;
-    align-items:stretch}
-}
-/* Rows share a baseline: every plaque is a grid row of its own, and the
-   install command is pinned to the bottom so the boxes line up across
-   columns no matter how long the description runs. */
-.plaque{border-top:1px solid var(--rule);padding:1.05rem 0 1.35rem;
-  display:grid;grid-template-rows:auto 1fr auto;align-content:start;
-  /* single explicit column capped at 100%: without this the nowrap install
-     command sets a min-content width and stretches the whole grid track */
-  grid-template-columns:minmax(0,1fr);min-width:0}
-.plaque h3{font-family:var(--serif);font-size:1.125rem;font-weight:500;
-  margin:0 0 .3rem}
-.plaque h3 a{color:var(--ink);border:0}
-.plaque h3 a:hover{color:var(--brass-deep)}
-.plaque p{font-size:.9375rem;line-height:1.55;color:var(--muted)}
-
-.shelf-note{margin-top:2.5rem;font-size:.9375rem;color:var(--muted);
-  max-width:var(--measure)}
-.shelf-note code{font-family:var(--mono);font-size:.8125rem;
-  color:var(--brass);white-space:nowrap}
-
-section.category{margin-top:2.25rem}
-section.category>.label{display:block;padding-bottom:.5rem;
-  border-bottom:2px solid var(--ink);color:var(--ink)}
-section.category>.label .n{color:var(--muted);font-weight:400}
-/* first row of plaques sits under the section rule — no doubled hairline */
-@media(min-width:768px){
-  .shelf>.plaque:nth-child(-n+2){border-top:0;padding-top:1.25rem}
-}
-@media(max-width:767px){
-  .shelf>.plaque:first-child{border-top:0;padding-top:1.25rem}
-}
-
-/* ---- hero ---- */
-.hero{display:grid;gap:2.5rem;align-items:start;margin-bottom:1rem}
-@media(min-width:900px){
-  .hero{grid-template-columns:1fr 1fr;column-gap:2.5rem;align-items:end}
-  .hero-lede{padding-bottom:.25rem}
-}
-.hero h1{max-width:14ch}
-
-/* ---- callout ---- */
-.callout{background:var(--brass-wash);padding:1.5rem}
-.callout h2{margin-top:.4rem;font-size:1.375rem;font-family:var(--serif);
-  font-weight:600}
-.callout p{margin-top:.5rem}
-.callout-cta{margin-top:1.1rem}
-.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
-.chips span{font-family:var(--sans);font-size:.75rem;color:var(--ink);
-  background:var(--card);border:1px solid var(--rule);
-  padding:.25rem .6rem;border-radius:999px}
-
-/* ---- margin notes (Tufte) ---- */
-.with-notes{position:relative}
-aside.notes{margin-top:2.5rem;padding-top:1.25rem;
-  border-top:1px solid var(--rule);max-width:var(--measure)}
-aside.notes>div+div{margin-top:1.5rem}
-aside.notes p,aside.notes li{font-size:.875rem;line-height:1.6;
-  color:var(--muted);margin-top:.4rem}
-@media(min-width:1180px){
-  aside.notes{position:absolute;top:0;left:calc(var(--measure) + 3rem);
-    width:13rem;margin:0;padding:0;border:0}
-  aside.notes>.inner{position:sticky;top:2.5rem}
-}
+.prose{max-width:var(--measure);margin-top:2.4rem}
+.prose p+p,.prose ul+p,.prose p+ul{margin-top:1.2rem}
+.prose h2{font-family:var(--black);font-weight:400;text-transform:uppercase;
+  letter-spacing:-.02em;font-size:1.3rem;margin:2.6rem 0 .8rem;line-height:1.2}
+.prose h3{font-weight:700;font-size:1.05rem;margin:2rem 0 .5rem}
+.prose a{box-shadow:inset 0 -3px 0 var(--y);font-weight:600}
+.prose a:hover{box-shadow:inset 0 -3px 0 var(--ink)}
+.prose ul{margin-top:1.2rem}
+.prose li{padding-left:1.4rem;position:relative;margin-bottom:.5rem}
+.prose li::before{content:"→";position:absolute;left:0;font-weight:700}
+.prose blockquote{margin:2rem 0;border-left:4px solid var(--ink);
+  padding-left:1.1rem}
+.prose blockquote p{font-weight:600;font-size:1.1rem;line-height:1.5}
+.prose blockquote p+p{margin-top:.6rem;font-weight:400;font-size:.9rem;
+  color:var(--grey)}
+.prose code{font-family:var(--mono);font-size:.85em;background:var(--hair);
+  padding:.12em .38em}
+.prose pre{background:var(--ink);padding:1rem 1.2rem;overflow-x:auto;
+  margin:1.5rem 0}
+.prose pre code{background:none;padding:0;color:var(--y)}
 
 /* ---- post list ---- */
-.posts{max-width:var(--measure);margin-top:1.5rem}
-.posts li{border-top:1px solid var(--rule);padding:1.15rem 0}
-.posts h2{font-family:var(--serif);font-size:1.25rem;font-weight:500;
-  margin:.3rem 0}
-.posts h2 a{color:var(--ink);border:0}
-.posts h2 a:hover{color:var(--brass-deep)}
-.posts p{font-size:.9375rem;color:var(--muted);max-width:52ch}
+.posts{max-width:var(--measure);margin-top:2rem}
+.posts li{border-top:3px solid var(--ink);padding:1.2rem 0 1.5rem}
+.posts .label{font-size:.7rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--grey)}
+.posts h2{font-family:var(--black);font-weight:400;text-transform:uppercase;
+  letter-spacing:-.02em;font-size:1.25rem;margin:.4rem 0;line-height:1.15}
+.posts h2 a:hover{box-shadow:inset 0 -4px 0 var(--y)}
+.posts p{font-size:.9rem;color:var(--grey);max-width:54ch}
+.posts .go{display:inline-block;margin-top:.5rem;font-weight:700;
+  font-size:.78rem;letter-spacing:.1em;text-transform:uppercase}
+.posts .go:hover{box-shadow:inset 0 -3px 0 var(--y)}
 
-/* ---- continue nav + footer ---- */
-.continue{margin-top:3rem;padding-top:1.25rem;
-  border-top:1px solid var(--rule);max-width:var(--measure)}
-.continue li{padding:.2rem 0;font-size:.9375rem}
-.continue li::before{display:none}
-.continue .say{color:var(--muted)}
+/* ---- continue nav ---- */
+.continue{margin-top:3.4rem;border-top:3px solid var(--ink);
+  padding-top:1.2rem;max-width:var(--measure)}
+.continue .label{font-size:.7rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--grey)}
+.continue ul{margin-top:.6rem}
+.continue li{padding:.25rem 0;font-size:.95rem}
+.continue li a{font-weight:700}
+.continue li a:hover{box-shadow:inset 0 -3px 0 var(--y)}
+.continue li::before{content:"→ ";font-weight:700}
+.continue .say{color:var(--grey)}
 
-footer.site{margin-top:5rem;border-top:1px solid var(--rule);
-  padding:1.75rem 0 3rem}
-footer.site p{font-family:var(--sans);font-size:.8125rem;color:var(--muted)}
-footer.site a{color:var(--muted);border-bottom-color:var(--rule)}
-footer.site a:hover{color:var(--ink)}
+/* ---- footer (ink band) ---- */
+footer.site{background:var(--ink);color:#B8B8B2;margin-top:5rem}
+footer.site .wrap{display:flex;flex-wrap:wrap;gap:1rem 2.5rem;
+  justify-content:space-between;align-items:center;
+  padding-top:1.6rem;padding-bottom:2.2rem}
+footer.site p{font-size:.8125rem;max-width:52ch}
+footer.site a{color:var(--y);font-weight:600}
+footer.site a:hover{color:#fff}
+footer.site .admission{display:block}
 
 main{padding-bottom:1rem}
 
